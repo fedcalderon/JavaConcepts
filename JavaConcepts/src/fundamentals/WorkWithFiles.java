@@ -1,12 +1,20 @@
 package fundamentals;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Date;
 
+/**
+ * This class models different scenarios of how to work with files
+ * 
+ * @author fcalderon
+ *
+ */
 public class WorkWithFiles {
 	// Define global variables or class members
 	private static String theFilename = "default.txt";
@@ -68,6 +76,34 @@ public class WorkWithFiles {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	/**
+	 * This method prompts the user for a message and appends it to a file
+	 * @param fname
+	 * 			File name to append user message
+	 */
+	public void promptUserForInputAndUpdateFile(String fname) {
+		printMsg("running promptUserForInputAndUpdateFile() in \"" + this.getClass().getName() + "\" class.");
+
+		// If file does not exist, create it first.
+		Path filepath = Paths.get(theRootPath + System.getProperty("file.separator") + fname);
+		if(!Files.exists(filepath)) {
+			createFile(fname);
+		}
+		
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));          
+            printMsg("Enter your message: ");
+            String msg = reader.readLine();
+            String msgWithTime = String.format("%s - %s", new Date(), msg);
+            Files.write(filepath, msgWithTime.getBytes(), StandardOpenOption.APPEND);
+            
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	/**
