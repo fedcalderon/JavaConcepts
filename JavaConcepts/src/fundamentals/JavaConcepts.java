@@ -11,23 +11,43 @@ public class JavaConcepts {
 	public static void main(String[] args) {
 		
 		printMsg("Illustrating Java concepts.");
-		
-		testWorkWithFilesClass();
+		// Run code to test file handling with Java
+		//testWorkWithFilesClass();
+		// Run code to test user interface
+		testWorkWithSwingClass();
+		printMsg("Goodbye!");
+	}
+	
+	public static void testWorkWithSwingClass() {
+		WorkWithSwing wswing = new WorkWithSwing();
+		//wswing.createSimpleFrame();
+		wswing.createMoreComplexGUI();
+		//printMsg(wswing.getDateTime());
 	}
 	
 	/**
 	 * This method runs different tests for the WorkWithFiles class
 	 */
 	public static void testWorkWithFilesClass() {
-		WorkWithFiles wf = new WorkWithFiles();
-		wf.createFile("file.txt");
-		wf.updateFile("file.txt", "This is a test to append data to file.");
 		
+		// Create object to use WorkWithFiles class
+		WorkWithFiles wf = new WorkWithFiles();
+		// Create an empty file
+		wf.createFile("file.txt");
+		// Update a file with a message passed as an argument
+		wf.updateFile("file.txt", "This is a test to append data to file.");
+		// Create an empty csv file
 		wf.createFile("data.csv");
+		// Create a StringBuilder object to build csv data
 		StringBuilder dataSB = new StringBuilder();
+		// Create header
 		dataSB.append("Date,Name,Age,City").append("\n");
+		// Add data
 		dataSB.append(String.format("%s,%s,%s,%s", new Date(),"Sam","17","Indialantic")).append("\n");
+		// Update csv file
 		wf.updateFile("data.csv", dataSB.toString());
+		// Prompt user for message and append it to a file
+		wf.promptUserForInputAndUpdateFile("file.txt");
 	}
 	
 	/**
