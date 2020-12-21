@@ -26,6 +26,16 @@ public class WorkWithSwing {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(300, 300);
 		JButton button = new JButton("Press");
+		
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				printMsg("pressed the button!");
+			}
+		});
+		
 		frame.getContentPane().add(button); // Adds Button to content pane of frame
 		frame.setVisible(true);
 	}
@@ -67,6 +77,7 @@ public class WorkWithSwing {
 
         // Text Area at the Center
         JTextArea ta = new JTextArea();
+        ta.append(String.format("%s\nWelcome to the Java Swing Chat App!\n\n", new Date()));
         
         // Perform actions with buttons
         send.addActionListener(new ActionListener() {
