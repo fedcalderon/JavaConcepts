@@ -13,6 +13,6 @@ public class Accounts {
 	}
 	
 	public void saveNewUsername(String name) {
-		
+		System.out.print("test msg");
 	}
 }
