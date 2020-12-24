@@ -7,7 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class models different scenarios of how to work with files
@@ -50,6 +54,34 @@ public class WorkWithFiles {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean doesFileExit(String fname) {
+		boolean exists = false;
+		Path filepath = Paths.get(theRootPath + System.getProperty("file.separator") + fname);
+		if(Files.exists(filepath)) {
+			return true;
+		}
+		
+		return exists;
+	}
+	
+	/**
+	 * This method reads the data.csv file, extracts user data, puts it
+	 * in a map and returns it to the caller.
+	 * @return
+	 */
+	public Map<Integer, List<String>> getUsers() {
+		Map<Integer, List<String>> userMap = new HashMap<Integer, List<String>>();
+		List<String> userData = new ArrayList<String>();
+		
+		// Step 1: read the data.csv file
+		// STep 2: fill out the userMap and userData
+		//         userID is the key, everything else is userData
+		
+		return userMap;
+	}
+	
+	
 	
 	/**
 	 * This method updates a file.
