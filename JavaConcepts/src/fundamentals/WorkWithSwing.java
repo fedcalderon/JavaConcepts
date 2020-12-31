@@ -40,8 +40,10 @@ public class WorkWithSwing {
         JMenuBar mb = new JMenuBar();
         JMenu m1 = new JMenu("File");
         JMenu m2 = new JMenu("Help");
+        JMenu m3 = new JMenu("User");
         mb.add(m1);
         mb.add(m2);
+        mb.add(m3);
         JMenuItem m11 = new JMenuItem("Open");
         JMenuItem m22 = new JMenuItem("Save as");
         JMenuItem m33 = new JMenuItem("Exit");
@@ -53,6 +55,10 @@ public class WorkWithSwing {
         JMenuItem m221 = new JMenuItem("Check for updates");
         m2.add(m21);
         m2.add(m221);
+        
+        
+        JMenuItem m31 = new JMenuItem("New");
+        m3.add(m31);
 
         //Creating the panel at bottom and adding components
         JPanel panel = new JPanel(); // the panel is not visible in output
