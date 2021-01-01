@@ -1,6 +1,8 @@
 package fundamentals;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
@@ -12,6 +14,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
+
+import com.sun.corba.se.impl.io.TypeMismatchException;
+
+
 
 /**
  * This class models different scenarios of how to work with files
@@ -69,14 +76,49 @@ public class WorkWithFiles {
 	 * This method reads the data.csv file, extracts user data, puts it
 	 * in a map and returns it to the caller.
 	 * @return
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public Map<Integer, List<String>> getUsers() {
+	public Map<Integer, List<String>> getUsers() throws FileNotFoundException, IOException {
+		String fname = "C:\\Users\\meepo\\git\\JavaConcepts\\scratch\\data.csv";
+		
 		Map<Integer, List<String>> userMap = new HashMap<Integer, List<String>>();
 		List<String> userData = new ArrayList<String>();
+		
 		
 		// Step 1: read the data.csv file
 		// STep 2: fill out the userMap and userData
 		//         userID is the key, everything else is userData
+		
+		
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(fname))) {
+		    String line;
+		    double counter = 0;
+		    Integer tempId = null;
+		    while ((line = br.readLine()) != null) {
+		        String[] values = line.split(",");
+		        
+		        for(String i : values) {
+		        	if(counter > 6) {
+		        		if(counter%7 == 0) {
+		        			tempId = Integer.valueOf(i);
+		        		}
+		        		
+		        		else {
+		        			userData.add(i);
+		        			if(counter%6 == 0) {
+		        				userMap.put(tempId, userData);
+		        				userData.clear();
+		        			}
+		        		}
+		        	}
+		        	counter++;
+		        }
+		        
+		    }
+		   
+		}
 		
 		return userMap;
 	}
