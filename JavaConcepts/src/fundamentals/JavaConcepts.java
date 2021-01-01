@@ -1,6 +1,8 @@
 package fundamentals;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class JavaConcepts {
 
@@ -14,15 +16,23 @@ public class JavaConcepts {
 		// Run code to test file handling with Java
 		//testWorkWithFilesClass();
 		// Run code to test user interface
-		testWorkWithSwingClass();
+		//testWorkWithSwingClass();
+		
+		testStringSplitter();
 		printMsg("Goodbye!");
 	}
 	
+	/**
+	 * Test the swing forms
+	 */
 	public static void testWorkWithSwingClass() {
 		WorkWithSwing wswing = new WorkWithSwing();
 		//wswing.createSimpleFrame();
-		wswing.createMoreComplexGUI();
+		//wswing.createMoreComplexGUI();
 		//printMsg(wswing.getDateTime());
+		
+		new RegistrationSwingExample();
+		//new LoginSwingExample();
 	}
 	
 	/**
@@ -48,6 +58,28 @@ public class JavaConcepts {
 		wf.updateFile("data.csv", dataSB.toString());
 		// Prompt user for message and append it to a file
 		wf.promptUserForInputAndUpdateFile("file.txt");
+		
+		String hi = "Hello Sam.";
+		hi = hi + " It's a great December day!";
+	}
+	
+	public static void testStringSplitter() {
+		
+		StringBuilder dataSB = new StringBuilder();
+		// Create header
+		dataSB.append("Date,Name,Age,City").append("\n");
+		// Add data
+		dataSB.append(String.format("%s,%s,%s,%s", new Date(),"Sam","17","Indialantic")).append("\n");
+		// Create string object 
+		String testData = dataSB.toString();
+		// Split string by a comma and save each data member into an array of Strings
+		List<String> testDataArray = Arrays.asList(testData.split(","));
+		
+		
+		for(String line : testDataArray) {
+			printMsg(line);
+		}
+		
 	}
 	
 	/**
