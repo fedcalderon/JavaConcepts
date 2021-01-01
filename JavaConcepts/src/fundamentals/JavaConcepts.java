@@ -1,6 +1,11 @@
 package fundamentals;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,10 +19,12 @@ public class JavaConcepts {
 	/**
 	 * Main entry to JavaConcepts
 	 * @param args
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
-		printMsg("Illustrating Java concepts.");
+		//printMsg("Illustrating Java concepts.");
 		// Run code to test file handling with Java
 		//testWorkWithFilesClass();
 		//manageUsers();
@@ -25,7 +32,10 @@ public class JavaConcepts {
 		//testWorkWithSwingClass();
 		//printMsg("Goodbye!");
 		
-		explainMaps();
+		//explainMaps();
+		WorkWithFiles p = new WorkWithFiles();
+		System.out.print(p.getUsers());
+		
 	}
 	
 	public static void testWorkWithSwingClass() {
