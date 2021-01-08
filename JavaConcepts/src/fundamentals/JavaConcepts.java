@@ -64,7 +64,7 @@ public class JavaConcepts {
 	}
 	
 	public static void testStringSplitter() {
-		
+		printMsg("Running testStringSplitter()");
 		StringBuilder dataSB = new StringBuilder();
 		// Create header
 		dataSB.append("Date,Name,Age,City").append("\n");
