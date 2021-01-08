@@ -134,4 +134,13 @@ public class WorkWithFiles {
 	public void printMsg(String msg) {
 		System.out.println(msg);
 	}
+
+	public boolean doesFileExit(String fname) {
+		boolean exists = false;
+		Path filepath = Paths.get(theRootPath + System.getProperty("file.separator") + fname);
+		if(Files.exists(filepath)) {
+			exists = true;
+		}
+		return exists;
+	}
 }
