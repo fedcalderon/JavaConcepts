@@ -94,27 +94,44 @@ public class WorkWithFiles {
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(fname))) {
 		    String line;
-		    double counter = 0;
+		    int counter = 0;
 		    Integer tempId = null;
 		    while ((line = br.readLine()) != null) {
 		        String[] values = line.split(",");
+		        int arraysize = values.length;
+		        int userID = 0;
 		        
-		        for(String i : values) {
-		        	if(counter > 6) {
-		        		if(counter%7 == 0) {
-		        			tempId = Integer.valueOf(i);
-		        		}
-		        		
-		        		else {
-		        			userData.add(i);
-		        			if(counter%6 == 0) {
-		        				userMap.put(tempId, userData);
-		        				userData.clear();
-		        			}
-		        		}
-		        	}
-		        	counter++;
+		        if(counter > 0) {
+		        
+			        if(values.length > 1 && Integer.valueOf(values[0]) != 0) {		
+			        	userID = Integer.valueOf(values[0]);
+			        	for(int i = 1; i <= values.length-1; i++) {
+			        		userData.add(values[i]);
+			        	}
+			        	userMap.put(tempId, userData);
+			        	userData.clear();
+			        	
+			        }
+			        
+			        printMsg(String.valueOf(userID));
 		        }
+		        counter++;
+//		        for(String i : values) {
+//		        	if(counter > 6) {
+//		        		if(counter%7 == 0 && i != "") {
+//		        			tempId = Integer.valueOf(i);
+//		        		}
+//		        		
+//		        		else {
+//		        			userData.add(i);
+//		        			if(counter%6 == 0) {
+//		        				userMap.put(tempId, userData);
+//		        				userData.clear();
+//		        			}
+//		        		}
+//		        	}
+//		        	counter++;
+//		        }
 		        
 		    }
 		   
