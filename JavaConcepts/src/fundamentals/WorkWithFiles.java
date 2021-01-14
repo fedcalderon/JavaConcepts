@@ -80,10 +80,10 @@ public class WorkWithFiles {
 	 * @throws FileNotFoundException 
 	 */
 	public Map<Integer, List<String>> getUsers() throws FileNotFoundException, IOException {
-		String fname = "C:\\Users\\meepo\\git\\JavaConcepts\\scratch\\data.csv";
+		String fname = "/Users/federicocalderon/git/JavaConcepts/JavaConcepts/scratch/data.csv";
 		
 		Map<Integer, List<String>> userMap = new HashMap<Integer, List<String>>();
-		List<String> userData = new ArrayList<String>();
+		List<String> userData = null;
 		
 		
 		// Step 1: read the data.csv file
@@ -105,11 +105,17 @@ public class WorkWithFiles {
 		        
 			        if(values.length > 1 && Integer.valueOf(values[0]) != 0) {		
 			        	userID = Integer.valueOf(values[0]);
+			        	
+			        	// Create a new list if the above condition is true
+			        	userData = new ArrayList<String>();
 			        	for(int i = 1; i <= values.length-1; i++) {
 			        		userData.add(values[i]);
 			        	}
-			        	userMap.put(tempId, userData);
-			        	userData.clear();
+			        	userMap.put(userID, userData);
+			        	
+			        	// If you clear the list, the data goes away.
+			        	// You have to create a new list every time.
+			        	//userData.clear();
 			        	
 			        }
 			        
