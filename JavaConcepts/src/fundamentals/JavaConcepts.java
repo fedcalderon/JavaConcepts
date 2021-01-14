@@ -80,8 +80,8 @@ public class JavaConcepts {
 		// Add data
 		Random rand = new Random();
 		int randomNo = (int) (rand.nextDouble() * 10000);
-		dataSB.append(String.format("%s,%s,%s,%s,%s,%s,%s", randomNo, new Date(), "Sam", "17", "Indialantic",
-				"User" + randomNo, "Password1")).append("\n");
+		dataSB.append(String.format("%s,%s,%s,%s,%s,%s,%s", randomNo, new Date(), "Fed", "43", "Malabar",
+				"User" + randomNo, "Pwd" + randomNo)).append("\n");
 
 		// Update csv file
 		wf.updateFile(fname, dataSB.toString());
